@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="id.aashari.code.miband2">
+    package="id.sashini.code.miband2">
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
@@ -16,12 +16,12 @@
         android:theme="@style/AppTheme">
 
         <service
-            android:name=".Services.HeartRateService"
+            android:name="id.sashini.code.miband2.Services.HeartRateService"
             android:enabled="true"
             android:exported="true" />
 
         <activity
-            android:name=".Activities.HeartRateActivity"
+            android:name="id.sashini.code.miband2.Activities.HeartRateActivity"
             android:label="@string/title_activity_heart_rate"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -30,7 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.DeviceScanActivity" />
+        <activity android:name="id.sashini.code.miband2.Activities.DeviceScanActivity" />
     </application>
 
 </manifest>

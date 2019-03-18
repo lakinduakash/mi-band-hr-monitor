@@ -1,4 +1,4 @@
-package id.aashari.code.miband2;
+package id.sashini.code.miband2;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

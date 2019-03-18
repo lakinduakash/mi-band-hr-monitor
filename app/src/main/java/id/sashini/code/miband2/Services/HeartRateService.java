@@ -1,6 +1,5 @@
-package id.aashari.code.miband2.Services;
+package id.sashini.code.miband2.Services;
 
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.Service;
@@ -13,9 +12,6 @@ import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothProfile;
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.Binder;
 import android.os.Build;
 import android.os.IBinder;
@@ -26,9 +22,9 @@ import android.util.Log;
 
 import java.util.Arrays;
 
-import id.aashari.code.miband2.Activities.HeartRateActivity;
-import id.aashari.code.miband2.Helpers.CustomBluetoothProfile;
-import id.aashari.code.miband2.R;
+import id.sashini.code.miband2.Activities.HeartRateActivity;
+import id.sashini.code.miband2.Helpers.CustomBluetoothProfile;
+import id.sashini.code.miband2.R;
 
 public class HeartRateService extends Service {
 

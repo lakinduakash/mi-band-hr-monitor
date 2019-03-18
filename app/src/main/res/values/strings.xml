@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MiBand2</string>
+    <string name="app_name">HR Notifier</string>
 
     <string name="ble_not_supported">BLE is not supported</string>
     <string name="label_data">Data:</string>
@@ -20,5 +20,5 @@
     <string name="menu_disconnect">Disconnect</string>
     <string name="menu_scan">Scan</string>
     <string name="menu_stop">Stop</string>
-    <string name="title_activity_heart_rate">HeartRateActivity</string>
+    <string name="title_activity_heart_rate">HR Notifier</string>
 </resources>

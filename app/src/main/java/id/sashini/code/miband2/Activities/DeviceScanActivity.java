@@ -1,7 +1,6 @@
-package id.aashari.code.miband2.Activities;
+package id.sashini.code.miband2.Activities;
 
 import android.app.Activity;
-import android.app.ListActivity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
@@ -26,7 +25,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import id.aashari.code.miband2.R;
+import id.sashini.code.miband2.R;
 
 /**
  * Activity for scanning and displaying available Bluetooth LE devices.

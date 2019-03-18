@@ -1,4 +1,4 @@
-package id.aashari.code.miband2.Helpers;
+package id.sashini.code.miband2.Helpers;
 
 import java.util.UUID;
 

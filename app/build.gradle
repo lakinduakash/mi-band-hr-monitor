@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     buildToolsVersion "28.0.3"
     defaultConfig {
-        applicationId "id.aashari.code.miband2"
+        applicationId "id.sashini.code.miband2"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
