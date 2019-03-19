@@ -9,7 +9,10 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,7 +46,6 @@ public class HeartRateActivity extends AppCompatActivity {
     private String mDeviceName;
     private String mDeviceAddress;
 
-    private BroadcastReceiver broadcastReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +53,18 @@ public class HeartRateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_heart_rate);
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Heart Rate Monitor");
+
         setSupportActionBar(toolbar);
+
+        mDeviceName = getIntent().getStringExtra(EXTRAS_DEVICE_NAME);
+        mDeviceAddress = getIntent().getStringExtra(EXTRAS_DEVICE_ADDRESS);
 
         initializeObjects();
         initViews();
         initListeners();
+
+        if(mDeviceAddress!=null)
+        deviceText.setText(mDeviceAddress +" Connected");
     }
 
     private void initViews()
@@ -123,10 +132,9 @@ public class HeartRateActivity extends AppCompatActivity {
     void initializeObjects() {
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
     }
+
     void getBoundedDevice() {
 
-        mDeviceName = getIntent().getStringExtra(EXTRAS_DEVICE_NAME);
-        mDeviceAddress = getIntent().getStringExtra(EXTRAS_DEVICE_ADDRESS);
 
         Toast.makeText(this,"Checking available devices",Toast.LENGTH_SHORT).show();
 
@@ -168,6 +176,31 @@ public class HeartRateActivity extends AppCompatActivity {
             heraRateText.setText(date);
         }
     };
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.hr, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_scan_d) {
+            Intent intent =new Intent(this,DeviceScanActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
 
 

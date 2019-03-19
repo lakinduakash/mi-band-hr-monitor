@@ -1,5 +1,6 @@
 package id.sashini.code.miband2.Activities;
 
+import android.Manifest;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -9,6 +10,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -31,6 +34,9 @@ import id.sashini.code.miband2.R;
  * Activity for scanning and displaying available Bluetooth LE devices.
  */
 public class DeviceScanActivity extends AppCompatActivity {
+
+    private static final int MY_PERMISSIONS_REQUEST_GET_LOCATION=1;
+
     private LeDeviceListAdapter mLeDeviceListAdapter;
     private BluetoothAdapter mBluetoothAdapter;
     private boolean mScanning;
@@ -124,15 +130,16 @@ public class DeviceScanActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 final BluetoothDevice device = mLeDeviceListAdapter.getDevice(i);
                 if (device == null) return;
-//                final Intent intent = new Intent(DeviceScanActivity.this, MainActivity.class);
-//                intent.putExtra(MainActivity.EXTRAS_DEVICE_NAME, device.getName());
-//                intent.putExtra(MainActivity.EXTRAS_DEVICE_ADDRESS, device.getAddress());
-//                intent.putExtra("device", device);
+                final Intent intent = new Intent(DeviceScanActivity.this, HeartRateActivity.class);
+                intent.putExtra(HeartRateActivity.EXTRAS_DEVICE_NAME, device.getName());
+                intent.putExtra(HeartRateActivity.EXTRAS_DEVICE_ADDRESS, device.getAddress());
+                intent.putExtra("device", device);
                 if (mScanning) {
                     mBluetoothAdapter.cancelDiscovery();
                     mScanning = false;
                 }
-                //startActivity(intent);
+                startActivity(intent);
+                finish();
             }
         });
         scanLeDevice(true);
@@ -263,5 +270,24 @@ public class DeviceScanActivity extends AppCompatActivity {
     static class ViewHolder {
         TextView deviceName;
         TextView deviceAddress;
+    }
+
+    private boolean checkPermission()
+    {
+        // Here, thisActivity is the current activity
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    MY_PERMISSIONS_REQUEST_GET_LOCATION);
+
+            return false;
+        } else {
+            // Permission has already been granted
+            return true;
+        }
+
     }
 }
